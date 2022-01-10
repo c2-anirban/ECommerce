@@ -20,12 +20,13 @@ import Contact from "./components/Details/Contact";
 import Blog from "./components/Details/Blog";
 import AboutUS from "./components/Details/AboutUs";
 import Cart from "./components/Home/Cart/Cart";
+import ProductDetails from "./components/Details/ProductDetails";
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <ToastContainer />
+        <ToastContainer />
         <Header />
         <Routes>
           <Route path="/" exact element={<Home />} />
@@ -42,6 +43,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/about" element={<AboutUS />} />
           <Route path="/Cart" element={<Cart />} />
+          <Route path="/productdetails" element={<ProductDetails />} />
         </Routes>
       </Router>
     </div>

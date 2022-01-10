@@ -97,6 +97,7 @@ const cartSlice = createSlice({
       state.cartTotalQuantity = quantity;
       state.cartTotalAmount = total;
     },
+
     clearCart(state, action) {
       state.cartItems = [];
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
