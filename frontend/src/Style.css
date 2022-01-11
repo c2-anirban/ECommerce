@@ -1146,6 +1146,9 @@ form input[type="submit"]:focus {
   font-size: 15px;
   font-weight: 400;
 }
+section.inner_page_head.bg-green {
+  background: green;
+}
 
 /* http://kute-themes.com/html/boutique/html/index.html
 https://template.hasthemes.com/noraure/noraure/index.html

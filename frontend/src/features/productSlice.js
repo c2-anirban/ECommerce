@@ -10,6 +10,7 @@ const productSlice = createSlice({
   reducers: {
     goToProductDetails(state, action) {
       state.productDetailsItems.push(action.payload);
+      // localStorage.setItem("productDetailsItems", JSON.stringify(state.productDetailsItems));
     },
   },
 });

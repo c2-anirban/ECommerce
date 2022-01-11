@@ -9,6 +9,7 @@ import {
   FaInstagram,
   FaPinterest,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import { useGetAllProductsQuery } from "../../features/productsApi";
 import { goToProductDetails } from "../../features/productSlice";
@@ -17,15 +18,15 @@ const Products = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
 
   const dispatch = useDispatch();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
-    history.push("/cart");
+    navigate.push("/cart");
   };
   const handleProductDetails = (product) => {
     dispatch(goToProductDetails(product));
-    // history.push("/productdetails");
+    navigate.push("/productdetails");
   };
 
   return (
@@ -67,13 +68,15 @@ const Products = () => {
                           >
                             Add To Cart
                           </a>
-                          <a
-                            onClick={() => handleProductDetails(product)}
-                            // href=""
-                            className="option2"
-                          >
-                            View Details
-                          </a>
+                          <Link to={`/productdetails`}>
+                            <a
+                              onClick={() => handleProductDetails(product)}
+                              // href="/productdetails"
+                              className="option2"
+                            >
+                              View Details
+                            </a>
+                          </Link>
                         </div>
                       </div>
                       <div className="img-box">

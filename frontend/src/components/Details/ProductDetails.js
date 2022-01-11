@@ -37,6 +37,12 @@ const ProductDetails = () => {
                 <div className="cart-product">
                   <img src={detailsItem.image} alt={detailsItem.id} />
                 </div>
+                <div>
+                  <h3>{detailsItem.name}</h3>
+                  <h4>{detailsItem.desc}</h4>
+
+                  <p>{detailsItem.details}</p>
+                </div>
               </div>
             ))}
           </div>

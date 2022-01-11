@@ -20,10 +20,12 @@ import StripeCheckout from "react-stripe-checkout";
 
 const Cart = () => {
   const makePayment = (token) => {
-    const body = {
-      token,
-      cart,
-    };
+    const body = [
+      {
+        token,
+        cart,
+      },
+    ];
     const headers = {
       "Content-Type": "application/json",
     };
@@ -37,7 +39,7 @@ const Cart = () => {
         const { status } = response;
         console.log("STATUS", status);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("error", error));
   };
   // const [cart, setCart] = useState(cartItems);
   const cart = useSelector((state) => state.cart);
@@ -146,7 +148,7 @@ const Cart = () => {
                 </div>
                 <p>Taxes and shipping calculated at checkout</p>
                 <StripeCheckout
-                  stripeKey="pk_test_51KGIPsSJ2Hg6deMjsCyW13Mz2wxNjNYfGkTbIk706PTeOHnIOBbDMxIdCnzv2ZGLdgUCvPPgRkmZn57qBd7TdxG600750OvbGN"
+                  stripeKey="pk_test_51KGIPsSJ2Hg6deMj0Tg0ZiAksQhh4ETRSSbOXAhvvdTE8DejCdbACeQOQBBl48XHnHdbZ64lqANJTlu2qOjEKIEh00Wh3Qn3Hp"
                   token={makePayment}
                   name="Check Out"
                   amount={cart.cartTotalAmount * 100}

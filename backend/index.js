@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(
-  "sk_test_51KGIPsSJ2Hg6deMjSEwdnIib0VPIWjZi09s49mp3SeTOyhpwVfxRIm9WATh45WCHikIAoXD4EtUYgDn2HmOICfpt00tHaSoyEn"
+  "sk_test_51KGIPsSJ2Hg6deMjhcWNNCvgUiQSdM9KPM5q0LKFdVUQU3xBlmbpmsDKCvSNfzXiNhnUPK0n1fnllEvbHMPsYUJI00eldMIm0P"
 );
 const uuid = require("uuid");
+const YOUR_DOMAIN = "http://localhost:3000";
 
 const products = require("./products");
 // const cart = require("./Cart");
@@ -49,11 +50,18 @@ app.post("/payment", (req, res) => {
               country: token.card.address_country,
             },
           },
+          success_url: `${YOUR_DOMAIN}/successful`,
+          cancel_url: `${YOUR_DOMAIN}/cancel`,
         },
         { idempotencyKey }
       );
     })
-    .then((result) => res.status(200).json(result))
+    .then((result) =>
+      res.status(200).json({
+        message: "charge posted successfully",
+        result,
+      })
+    )
     .catch((err) => console.log(err));
 });
 
