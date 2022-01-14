@@ -36,7 +36,7 @@ const Product = () => {
                 </h2>
               </div>
               <div className="row">
-                {data?.map((product) => (
+                {data?.slice(0, 6).map((product) => (
                   <div key={product.id} className="col-sm-6 col-md-4 col-lg-4">
                     <div className="box">
                       <div className="option_container">

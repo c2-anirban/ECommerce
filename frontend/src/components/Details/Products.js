@@ -2,6 +2,8 @@ import React from "react";
 import { addToCart } from "../../features/cartSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { useState, useEffect } from "react";
+
 import {
   FaFacebookF,
   FaTwitter,
@@ -16,7 +18,6 @@ import { goToProductDetails } from "../../features/productSlice";
 
 const Products = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,28 +29,63 @@ const Products = () => {
     dispatch(goToProductDetails(product));
     navigate.push("/productdetails");
   };
+  const [dataNew, setDataNew] = useState(data);
+  const filterProduct = (catItem) => {
+    const result = data.filter((curData) => {
+      return curData.category == catItem;
+    });
+
+    setDataNew(result);
+  };
+  // const [allItem, setAllItem] = useState([]);
+  const [itemCount, setItemCount] = useState(6);
+
+  const loadMoreItem = () => {
+    setItemCount(dataNew.length);
+  };
+  // useEffect(() => {
+  //   setAllItem(allItem);
+  // }, []);
+
+  // console.log(allItem);
 
   return (
     <div>
+      <section className="inner_page_head">
+        <div className="container_fuild">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="full">
+                <h3>Product Grid</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div className="d-flex  justify-content-center mt-5">
+        <button className="mr-3" onClick={() => setDataNew(data)}>
+          All
+        </button>
+        <button className="mr-3" onClick={() => filterProduct("Men")}>
+          Men
+        </button>
+        <button className="mr-3" onClick={() => filterProduct("Women")}>
+          Women
+        </button>
+        <button className="mr-3" onClick={() => filterProduct("kids")}>
+          Kids
+        </button>
+        <button className="mr-3" onClick={() => filterProduct(data)}>
+          Others
+        </button>
+      </div>
       {isLoading ? (
         <p>isLoading</p>
       ) : error ? (
         <p> An error Occyred... </p>
       ) : (
         <>
-          <section className="inner_page_head">
-            <div className="container_fuild">
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="full">
-                    <h3>Product Grid</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="product_section layout_padding">
+          <section className="product_section layout_padding products">
             <div className="container">
               <div className="heading_container heading_center">
                 <h2>
@@ -57,7 +93,7 @@ const Products = () => {
                 </h2>
               </div>
               <div className="row">
-                {data?.map((product) => (
+                {dataNew?.slice(0, itemCount).map((product) => (
                   <div key={product.id} className="col-sm-6 col-md-4 col-lg-4">
                     <div className="box">
                       <div className="option_container">
@@ -91,7 +127,9 @@ const Products = () => {
                 ))}
               </div>
               <div className="btn-box">
-                <a href="/products">View More</a>
+                <a className="btn-box" onClick={loadMoreItem}>
+                  View More
+                </a>
               </div>
             </div>
           </section>

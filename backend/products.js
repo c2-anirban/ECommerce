@@ -1,27 +1,34 @@
 const products = [
   {
     id: 1,
-    name: "Men's Shirt",
-    brand: "Denim",
+    name: "Kids's special",
+    category: "kids",
+    brand: "Brandy ",
     desc: "Unique quality",
+
     details:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
     price: 999,
-    image: "./images/p1.png",
+    image: "./images/c1.png",
   },
+
   {
     id: 2,
-    name: "Men's shirt",
-    brand: "Denim",
+    name: "Kids",
+    category: "kids",
+    brand: "Liser",
     desc: "Unique quality",
+
     details:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    price: 699,
-    image: "./images/p2.png",
+      "The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+    price: 490,
+    image: "./images/c4.png",
   },
+
   {
     id: 3,
     name: "Women's Dress",
+    category: "Women",
     brand: "Liser",
     desc: "Unique quality",
     details:
@@ -32,6 +39,7 @@ const products = [
   {
     id: 4,
     name: "Women's Dress",
+    category: "Women",
     brand: "Liser",
     desc: "Unique quality",
     details:
@@ -42,6 +50,7 @@ const products = [
   {
     id: 5,
     name: "Women's Dress",
+    category: "Women",
     brand: "Liser",
     desc: "Unique quality",
     details:
@@ -51,17 +60,21 @@ const products = [
   },
   {
     id: 6,
-    name: "Women's Dress",
+    name: "Kids",
+    category: "kids",
     brand: "Liser",
     desc: "Unique quality",
+
     details:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    price: 255,
-    image: "./images/p6.png",
+      "The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+    price: 330,
+    image: "./images/c2.png",
   },
+
   {
     id: 7,
     name: "Women's Dress",
+    category: "Women",
     brand: "Liser",
     desc: "Unique quality",
     details:
@@ -72,6 +85,7 @@ const products = [
   {
     id: 8,
     name: "Men's shirt",
+    category: "Men",
     brand: "Liser",
     desc: "Unique quality",
     details:
@@ -81,17 +95,20 @@ const products = [
   },
   {
     id: 9,
-    name: "Men's shirt",
-    brand: "Liser",
+    name: "Men's Shirt",
+    category: "Men",
+    brand: "Denim",
     desc: "Unique quality",
     details:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-    price: 599,
-    image: "./images/p9.png",
+    price: 999,
+    image: "./images/p1.png",
   },
+
   {
     id: 10,
     name: "Men's shirt",
+    category: "Men",
     brand: "Liser",
     desc: "Unique quality",
     details:
@@ -102,6 +119,7 @@ const products = [
   {
     id: 11,
     name: "Men's shirt",
+    category: "Men",
     brand: "Liser",
     desc: "Unique quality",
     details:
@@ -112,6 +130,7 @@ const products = [
   {
     id: 12,
     name: "Women's Dress",
+    category: "Women",
     brand: "Liser",
     desc: "Unique quality",
 
@@ -119,6 +138,75 @@ const products = [
       "The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
     price: 285,
     image: "./images/p12.png",
+  },
+  {
+    id: 13,
+    name: "Kids's special",
+    category: "kids",
+    brand: "Love",
+    desc: "Unique quality",
+
+    details:
+      "The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+    price: 285,
+    image: "./images/c3.png",
+  },
+  {
+    id: 14,
+    name: "Men's shirt",
+    category: "Men",
+    brand: "Liser",
+    desc: "Unique quality",
+    details:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    price: 599,
+    image: "./images/p9.png",
+  },
+  {
+    id: 15,
+    name: "Children's special",
+    category: "kids",
+    brand: "Liser",
+    desc: "Unique quality",
+
+    details:
+      "The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+    price: 185,
+    image: "./images/c5.png",
+  },
+  {
+    id: 16,
+    name: "Men's shirt",
+    category: "Men",
+    brand: "Denim",
+    desc: "Unique quality",
+    details:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    price: 699,
+    image: "./images/p2.png",
+  },
+  {
+    id: 17,
+    name: "Women's Dress",
+    category: "Women",
+    brand: "Liser",
+    desc: "Unique quality",
+    details:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+    price: 255,
+    image: "./images/p6.png",
+  },
+  {
+    id: 18,
+    name: "Kids",
+    category: "kids",
+    brand: "Liser",
+    desc: "Unique quality",
+
+    details:
+      "The Jackets is US standard size, Please choose size as your usual wear Material: 100% Polyester; Detachable Liner Fabric: Warm Fleece. Detachable Functional Liner: Skin Friendly, Lightweigt and Warm.Stand Collar Liner jacket, keep you warm in cold weather. Zippered Pockets: 2 Zippered Hand Pockets, 2 Zippered Pockets on Chest (enough to keep cards or keys)and 1 Hidden Pocket Inside.Zippered Hand Pockets and Hidden Pocket keep your things secure. Humanized Design: Adjustable and Detachable Hood and Adjustable cuff to prevent the wind and water,for a comfortable fit. 3 in 1 Detachable Design provide more convenience, you can separate the coat and inner as needed, or wear it together. It is suitable for different season and help you adapt to different climates",
+    price: 490,
+    image: "./images/c6.png",
   },
 ];
 

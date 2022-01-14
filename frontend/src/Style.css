@@ -526,7 +526,7 @@ span.bag-quantity {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-top: 45px;
+  margin-top: 20px;
 }
 
 .product_section .btn-box a {
@@ -1148,6 +1148,26 @@ form input[type="submit"]:focus {
 }
 section.inner_page_head.bg-green {
   background: green;
+}
+button.mr-3 {
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 30px;
+  /* background-color: #f7444e; */
+  border: 1px solid #f7444e;
+  color: #0a0909;
+  border-radius: 0;
+  transition: all 0.3s;
+  margin-top: 10px;
+  font-weight: 700;
+}
+button.mr-3:hover {
+  background-color: #f7444e;
+  color: #fcf7f7;
+}
+
+section.product_section.layout_padding.products {
+  padding: 10px 0 70px !important;
 }
 
 /* http://kute-themes.com/html/boutique/html/index.html

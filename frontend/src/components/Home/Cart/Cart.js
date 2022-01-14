@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -14,33 +14,12 @@ import {
   FaInstagram,
   FaPinterest,
 } from "react-icons/fa";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 
 const Cart = () => {
-  const makePayment = (token) => {
-    const body = [
-      {
-        token,
-        cart,
-      },
-    ];
-    const headers = {
-      "Content-Type": "application/json",
-    };
-    return fetch(`http://localhost:5000/payment`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body),
-    })
-      .then((response) => {
-        console.log("RESPONSE", response);
-        const { status } = response;
-        console.log("STATUS", status);
-      })
-      .catch((error) => console.log("error", error));
-  };
   // const [cart, setCart] = useState(cartItems);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -61,6 +40,48 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
+  const price = cart.cartTotalAmount * 100;
+  const makePayment = (token) => {
+    // console.log("Payment Successful");
+    // axios({
+    //   url: "http://localhost:5000/payment",
+    //   method: "post",
+    //   data: {
+    //     amount: price,
+    //     token,
+    //   },
+    // })
+    //   .then((response) => {
+    //     alert("Payment Successful");
+    //   })
+    //   .catch((error) => {
+    //     console.log("Payment error : ", JSON.parse(JSON.stringify(error)));
+    //     alert("There was an issue with your payment");
+    //   });
+
+    const body = [
+      {
+        token,
+        cart,
+      },
+    ];
+    const headers = {
+      "content-Type": "application/x-www-form-urlencoded",
+    };
+    return fetch("http://localhost:5000/payment", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ items: cart.cartItems }),
+    })
+      .then((response) => {
+        console.log("RESPONSE", response);
+        const { status } = response;
+        console.log("STATUS", status);
+      })
+      .catch((error) => console.log("error", error));
+  };
+
   return (
     <div>
       <section className="inner_page_head">
@@ -151,7 +172,7 @@ const Cart = () => {
                   stripeKey="pk_test_51KGIPsSJ2Hg6deMj0Tg0ZiAksQhh4ETRSSbOXAhvvdTE8DejCdbACeQOQBBl48XHnHdbZ64lqANJTlu2qOjEKIEh00Wh3Qn3Hp"
                   token={makePayment}
                   name="Check Out"
-                  amount={cart.cartTotalAmount * 100}
+                  amount={price}
                 >
                   <button>Check Out</button>
                 </StripeCheckout>
