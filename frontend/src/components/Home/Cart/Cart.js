@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   addToCart,
   clearCart,
@@ -43,43 +44,44 @@ const Cart = () => {
 
   const price = cart.cartTotalAmount * 100;
   const makePayment = (token) => {
-    // console.log("Payment Successful");
-    // axios({
-    //   url: "http://localhost:5000/payment",
-    //   method: "post",
-    //   data: {
-    //     amount: price,
-    //     token,
-    //   },
-    // })
-    //   .then((response) => {
-    //     alert("Payment Successful");
-    //   })
-    //   .catch((error) => {
-    //     console.log("Payment error : ", JSON.parse(JSON.stringify(error)));
-    //     alert("There was an issue with your payment");
-    //   });
+    console.log("Payment Successful", token);
 
-    const body = [
-      {
+    axios({
+      url: "http://localhost:5000/payment",
+      method: "post",
+      data: {
+        amount: price,
         token,
-        cart,
       },
-    ];
-    const headers = {
-      "content-Type": "application/x-www-form-urlencoded",
-    };
-    return fetch("http://localhost:5000/payment", {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ items: cart.cartItems }),
     })
       .then((response) => {
-        console.log("RESPONSE", response);
-        const { status } = response;
-        console.log("STATUS", status);
+        alert("Payment Successful", response);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => {
+        console.log("Payment error : ", JSON.parse(JSON.stringify(error)));
+        alert("There was an issue with your payment");
+      });
+
+    // const body = [
+    //   {
+    //     token,
+    //     cart,
+    //   },
+    // ];
+    // const headers = {
+    //   "content-Type": "application/x-www-form-urlencoded",
+    // };
+    // return fetch("http://localhost:5000/payment", {
+    //   method: "POST",
+    //   headers,
+    //   body: JSON.stringify({ items: cart.cartItems }),
+    // })
+    //   .then((response) => {
+    //     console.log("RESPONSE", response);
+    //     const { status } = response;
+    //     console.log("STATUS", status);
+    //   })
+    //   .catch((error) => console.log("error", error));
   };
 
   return (
@@ -173,6 +175,8 @@ const Cart = () => {
                   token={makePayment}
                   name="Check Out"
                   amount={price}
+                  shippingAddress
+                  billingAddress
                 >
                   <button>Check Out</button>
                 </StripeCheckout>

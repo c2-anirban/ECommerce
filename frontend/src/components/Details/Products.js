@@ -37,17 +37,11 @@ const Products = () => {
 
     setDataNew(result);
   };
-  // const [allItem, setAllItem] = useState([]);
   const [itemCount, setItemCount] = useState(6);
 
   const loadMoreItem = () => {
     setItemCount(dataNew.length);
   };
-  // useEffect(() => {
-  //   setAllItem(allItem);
-  // }, []);
-
-  // console.log(allItem);
 
   return (
     <div>

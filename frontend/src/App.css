@@ -10568,7 +10568,6 @@ a.text-dark:focus {
   align-items: center;
 }
 @media (max-width: 665px) {
-
   /* Cart */
   .cart-container {
     padding: 2rem;
@@ -10591,4 +10590,8 @@ a.text-dark:focus {
     margin-bottom: 2rem;
   }
 }
-
+button.btn.my-2.my-sm-0.nav_search-btn {
+  height: 2em;
+  width: 3em;
+  padding: 5px 0px 2px 12px;
+}

@@ -1,10 +1,12 @@
 import React from "react";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
+// import { AiOutlineLogin } from "react-icons/ai";
+import { RiLogoutCircleRFill, RiLoginCircleFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-   const { cartTotalQuantity } = useSelector((state) => state.cart);
+  const { cartTotalQuantity } = useSelector((state) => state.cart);
 
   return (
     <div>
@@ -30,7 +32,7 @@ const Header = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav">
-                <li className="nav-item active">
+                <li className="nav-item">
                   <a className="nav-link" href="/">
                     Home
                     {/* <span className="sr-only">(current)</span> */}
@@ -39,7 +41,7 @@ const Header = () => {
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
-                    href="dropdown"
+                    href="#"
                     data-toggle="dropdown"
                     role="button"
                     aria-haspopup="true"
@@ -52,10 +54,10 @@ const Header = () => {
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <a href="/about">About</a>
+                      <a href="#">About</a>
                     </li>
                     <li>
-                      <a href="/testimonial">Testimonial</a>
+                      <a href="#">Testimonial</a>
                     </li>
                   </ul>
                 </li>
@@ -75,7 +77,7 @@ const Header = () => {
                   </a>
                 </li>
                 <Link to="/cart">
-                  <li className="nav-item">
+                  <li className="nav-item nav-item-icon cart">
                     <button
                       className="btn  my-2 my-sm-0 nav_search-btn"
                       type="submit"
@@ -90,7 +92,7 @@ const Header = () => {
                     </span>
                   </li>
                 </Link>
-                <form className="form-inline">
+                <form className="form-inline search">
                   <button
                     className="btn  my-2 my-sm-0 nav_search-btn"
                     type="submit"
@@ -98,6 +100,30 @@ const Header = () => {
                     <FaSearch />
                   </button>
                 </form>
+                <Link to="/login">
+                  <li className="nav-item logIn">
+                    <span>
+                      <button
+                        className="btn  my-2 my-sm-0 nav_search-btn"
+                        type="submit"
+                      >
+                        <RiLoginCircleFill />
+                      </button>
+                    </span>
+                  </li>
+                </Link>
+                <Link to="/register">
+                  <li className="nav-item logOut">
+                    <span>
+                      <button
+                        className="btn  my-2 my-sm-0 nav_search-btn"
+                        type="submit"
+                      >
+                        <RiLogoutCircleRFill />
+                      </button>
+                    </span>
+                  </li>
+                </Link>
               </ul>
             </div>
           </nav>

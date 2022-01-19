@@ -22,6 +22,8 @@ import AboutUS from "./components/Details/AboutUs";
 import Cart from "./components/Home/Cart/Cart";
 import ProductDetails from "./components/Details/ProductDetails";
 import PaymentSuccessful from "./components/Home/Billing/PaymentSuccessful";
+import Login from "./components/Home/Login/Login";
+import Register from "./components/Home/Register/Register";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/productdetails" element={<ProductDetails />} />
           <Route path="/successful" element={<PaymentSuccessful />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
     </div>
