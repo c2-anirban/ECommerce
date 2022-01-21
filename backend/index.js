@@ -1,4 +1,6 @@
 require("dotenv").config();
+const userRoute = require("./routes/user");
+const authRoute = require("./routes/auth");
 
 const express = require("express");
 const cors = require("cors");
@@ -10,13 +12,15 @@ const products = require("./products");
 // const cart = require("./Cart");
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Welcome our to online shop API...");
 });
+
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 
 app.get("/products", (req, res) => {
   res.send(products);

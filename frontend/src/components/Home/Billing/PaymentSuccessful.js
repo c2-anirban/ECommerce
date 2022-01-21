@@ -1,6 +1,9 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 const PaymentSuccessful = () => {
+  const location = useLocation();
+  console.log(location);
   return (
     <div>
       <section className="inner_page_head bg-green">

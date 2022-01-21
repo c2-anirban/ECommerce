@@ -1,8 +1,8 @@
-// import { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
-// import { login } from "../../../features/userSlice";
+import { login } from "../../../features/apiCalls";
 // import { mobile } from "../../../responsive";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   FaFacebookF,
   FaTwitter,
@@ -13,10 +13,10 @@ import {
 
 const Container = styled.div`
   width: 100vw;
-  height: 65vh;
+  height: 64vh;
   background: linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.7)
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.2)
     ),
     url("https://images.pexels.com/photos/6984709/pexels-photo-6984709.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
       center;
@@ -80,15 +80,15 @@ const Error = styled.span`
 `;
 
 const Login = () => {
-  //   const [username, setUsername] = useState("");
-  //   const [password, setPassword] = useState("");
-  //   const dispatch = useDispatch();
-  //   const { isFetching, error } = useSelector((state) => state.user);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
 
-  //   const handleClick = (e) => {
-  //     e.preventDefault();
-  //     login(dispatch, { username, password });
-  //   };
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
   return (
     <>
       <Container className="mb-4">
@@ -97,15 +97,16 @@ const Login = () => {
           <Form>
             <Input
               placeholder="username"
-              // onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
             <Input
               placeholder="password"
               type="password"
-              // onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Button
-            //   onClick={handleClick} disabled={isFetching}
+              onClick={handleClick}
+              // disabled={isFetching}
             >
               LOGIN
             </Button>

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import {
   addToCart,
@@ -24,6 +25,7 @@ const Cart = () => {
   // const [cart, setCart] = useState(cartItems);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const history = useNavigate();
 
   useEffect(() => {
     dispatch(getTotals());
@@ -51,11 +53,12 @@ const Cart = () => {
       method: "post",
       data: {
         amount: price,
-        token,
+        token: token.id,
       },
     })
       .then((response) => {
         alert("Payment Successful", response);
+        history("/successful", { data: response.data });
       })
       .catch((error) => {
         console.log("Payment error : ", JSON.parse(JSON.stringify(error)));
@@ -173,7 +176,8 @@ const Cart = () => {
                 <StripeCheckout
                   stripeKey="pk_test_51KGIPsSJ2Hg6deMj0Tg0ZiAksQhh4ETRSSbOXAhvvdTE8DejCdbACeQOQBBl48XHnHdbZ64lqANJTlu2qOjEKIEh00Wh3Qn3Hp"
                   token={makePayment}
-                  name="Check Out"
+                  name="Famms"
+                  description={`Your total is ₹${price} `}
                   amount={price}
                   shippingAddress
                   billingAddress

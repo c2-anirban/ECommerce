@@ -3,7 +3,12 @@ import "./Style.css";
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Home/Header/Header";
 import Slider from "./components/Home/Slider/Slider";
@@ -24,8 +29,10 @@ import ProductDetails from "./components/Details/ProductDetails";
 import PaymentSuccessful from "./components/Home/Billing/PaymentSuccessful";
 import Login from "./components/Home/Login/Login";
 import Register from "./components/Home/Register/Register";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <div className="App">
       <Router>
@@ -48,8 +55,14 @@ function App() {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/productdetails" element={<ProductDetails />} />
           <Route path="/successful" element={<PaymentSuccessful />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/register"
+            element={user ? <Navigate to="/" /> : <Register />}
+          />
         </Routes>
       </Router>
     </div>

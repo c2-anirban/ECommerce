@@ -7,6 +7,11 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import productsReducer, { productsFetch } from "./features/productsSlice";
 import cartReducer, { getTotals } from "./features/cartSlice";
+import userReducer, {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+} from "./features/userSlice";
 import { productsApi } from "./features/productsApi";
 import productReducer from "./features/productSlice";
 
@@ -15,6 +20,7 @@ const store = configureStore({
     products: productsReducer,
     cart: cartReducer,
     Details: productReducer,
+    user: userReducer,
     [productsApi.reducerPath]: productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -23,6 +29,9 @@ const store = configureStore({
 
 store.dispatch(productsFetch());
 store.dispatch(getTotals());
+store.dispatch(loginStart());
+store.dispatch(loginSuccess());
+store.dispatch(loginFailure());
 
 ReactDOM.render(
   <React.StrictMode>
