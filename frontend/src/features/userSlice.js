@@ -3,24 +3,58 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    currentUser: null,
-    isFetching: false,
-    error: false,
+    user: null,
+    // loggedIn: false,
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+    cartTotalQuantity: 0,
+    cartTotalAmount: 0,
   },
   reducers: {
-    loginStart: (state) => {
-      state.isFetching = true;
+    login: (state, action) => {
+      // loggedIn: true;
+      state.user = action.payload;
+      alert("Logged in");
+      // state.user.push(action.payload);
+      console.log("success");
+
+      localStorage.setItem("user", JSON.stringify(state.user));
     },
-    loginSuccess: (state, action) => {
-      state.isFetching = false;
-      state.currentUser = action.payload;
-    },
-    loginFailure: (state) => {
-      state.isFetching = false;
-      state.error = true;
+
+    logout: (state) => {
+      state.user = null;
     },
   },
 });
 
-export const { loginStart, loginSuccess, loginFailure } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
+
+export const selectUser = (state) => state.user;
 export default userSlice.reducer;
+
+// import { createSlice } from "@reduxjs/toolkit";
+
+// const initialState = {
+//   userName: null,
+//   userEmail: null,
+// };
+
+// const userSlice = createSlice({
+//   name: "user",
+//   initialState,
+//   reducers: {
+//     setActiveUser: (state, action) => {
+//       state.userName = action.payload.userName;
+//       state.userEmail = action.payload.userEmail;
+//     },
+//     setUserLogOutState: (state, action) => {
+//       state.userName = null;
+//       state.userEmail = null;
+//     },
+//   },
+// });
+
+// export const { setActiveUser, setUserLogOutState } = userSlice.actions;
+
+// export default userSlice.reducer;

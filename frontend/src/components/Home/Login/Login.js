@@ -1,8 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { login } from "../../../features/apiCalls";
+import { login } from "../../../features/userSlice";
 // import { mobile } from "../../../responsive";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   FaFacebookF,
   FaTwitter,
@@ -81,31 +82,47 @@ const Error = styled.span`
 
 const Login = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
+  const { loggedIn, error } = useSelector((state) => state.user);
 
-  const handleClick = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    dispatch(
+      login({
+        username: username,
+        email: email,
+        password: password,
+        loggedIn: true,
+      })
+    );
   };
   return (
     <>
       <Container className="mb-4">
         <Wrapper>
           <Title>SIGN IN</Title>
-          <Form>
+          <Form onSubmit={(e) => handleSubmit(e)}>
             <Input
               placeholder="username"
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <Input
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
               placeholder="password"
+              value={password}
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
             <Button
-              onClick={handleClick}
+              type="submit"
+              // onClick={handleClick}
               // disabled={isFetching}
             >
               LOGIN

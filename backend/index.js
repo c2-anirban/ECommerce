@@ -1,10 +1,10 @@
 require("dotenv").config();
-const userRoute = require("./routes/user");
-const authRoute = require("./routes/auth");
+const mongoose = require("mongoose");
 
 const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(process.env.REACT_APP_KEY);
+
 const uuid = require("uuid");
 const YOUR_DOMAIN = "http://localhost:3000";
 
@@ -18,9 +18,6 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Welcome our to online shop API...");
 });
-
-app.use("/api/auth", authRoute);
-app.use("/api/users", userRoute);
 
 app.get("/products", (req, res) => {
   res.send(products);

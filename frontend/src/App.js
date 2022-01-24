@@ -32,7 +32,7 @@ import Register from "./components/Home/Register/Register";
 import { useSelector } from "react-redux";
 
 function App() {
-  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user.user);
   return (
     <div className="App">
       <Router>

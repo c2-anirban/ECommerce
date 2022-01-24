@@ -7,11 +7,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import productsReducer, { productsFetch } from "./features/productsSlice";
 import cartReducer, { getTotals } from "./features/cartSlice";
-import userReducer, {
-  loginStart,
-  loginSuccess,
-  loginFailure,
-} from "./features/userSlice";
+import userReducer, { login, logout } from "./features/userSlice";
 import { productsApi } from "./features/productsApi";
 import productReducer from "./features/productSlice";
 
@@ -29,9 +25,8 @@ const store = configureStore({
 
 store.dispatch(productsFetch());
 store.dispatch(getTotals());
-store.dispatch(loginStart());
-store.dispatch(loginSuccess());
-store.dispatch(loginFailure());
+store.dispatch(logout());
+store.dispatch(login());
 
 ReactDOM.render(
   <React.StrictMode>
