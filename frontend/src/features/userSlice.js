@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    user: null,
+    user: [],
     // loggedIn: false,
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
@@ -15,14 +15,17 @@ const userSlice = createSlice({
     login: (state, action) => {
       // loggedIn: true;
       state.user = action.payload;
-      alert("Logged in");
+      state.cartItems = action.payload;
+      // alert("Logged in");
       // state.user.push(action.payload);
       console.log("success");
 
-      localStorage.setItem("user", JSON.stringify(state.user));
+      if (state?.user)
+        localStorage.setItem("user", JSON.stringify(state?.user));
+      // localStorage.setItem("usercartItems", JSON.stringify(state?.cartItems));
     },
 
-    logout: (state) => {
+    logout: (state, action) => {
       state.user = null;
     },
   },
