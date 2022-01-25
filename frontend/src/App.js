@@ -30,6 +30,7 @@ import PaymentSuccessful from "./components/Home/Billing/PaymentSuccessful";
 import Login from "./components/Home/Login/Login";
 import Register from "./components/Home/Register/Register";
 import { useSelector } from "react-redux";
+import LogOut from "./components/Home/Logout/LogOut";
 
 function App() {
   const user = useSelector((state) => state.user.user);
@@ -63,6 +64,7 @@ function App() {
             path="/register"
             element={user ? <Navigate to="/" /> : <Register />}
           />
+          <Route path="/logout" element={<LogOut />} />
         </Routes>
       </Router>
     </div>

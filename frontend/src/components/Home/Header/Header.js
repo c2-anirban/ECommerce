@@ -112,7 +112,7 @@ const Header = () => {
                     </span>
                   </li>
                 </Link>
-                <Link to="/register">
+                <Link to="/logout">
                   <li className="nav-item logOut">
                     <span>
                       <button

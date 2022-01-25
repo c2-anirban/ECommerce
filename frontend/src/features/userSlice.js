@@ -4,7 +4,6 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     user: [],
-    // loggedIn: false,
     cartItems: localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [],
@@ -13,11 +12,8 @@ const userSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      // loggedIn: true;
       state.user = action.payload;
       state.cartItems = action.payload;
-      // alert("Logged in");
-      // state.user.push(action.payload);
       console.log("success");
 
       if (state?.user)
@@ -26,7 +22,9 @@ const userSlice = createSlice({
     },
 
     logout: (state, action) => {
-      state.user = null;
+      state.user = action.payload;
+      if (state?.user)
+        localStorage.removeItem("user", JSON.stringify(state?.user));
     },
   },
 });
